@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import Dashboard from "./Components/dashboard"
 import LoginForm from './Components/LoginForm';
 
 class App extends Component {
   render() {
     return (
-      <LoginForm />
+          <div>
+            <Route path="/login" component={LoginForm} />
+            <Route path="/dashboard" component={Dashboard} />
+          </div>
+      // <LoginForm />
       // <Dashboard />
     )
   }

@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
+// import {withRouter} from "react-router-dom";
+
 import '../LoginForm.css';
 import 'font-awesome/css/font-awesome.min.css';
 import waterBackground from '../images/backgroundWater.jpg';
 
 class LoginForm extends Component {
 
+    constructor (){
+        super();
+        this.submitForm = this.submitForm.bind(this);
+    }
+
   submitForm(e){
     /*TODO Implement this function*/
-    console.log("Form Submitted!");
     e.preventDefault();
+    console.log("Form Submitted!");
+    this.props.history.push('/dashboard')   
   }
 
   render() {
@@ -57,4 +65,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default  LoginForm;

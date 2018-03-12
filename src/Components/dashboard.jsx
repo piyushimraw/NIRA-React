@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Grid, Row} from "react-bootstrap";
-import Image_card from "./image_card/image_card";
+import ImageCard from "./image_card/image_card";
 
 
 
@@ -21,7 +21,7 @@ class Dashboard extends Component {
 
   render() {
     const img = this.state.samples.map(sample => {
-      return <Image_card src={sample.Image} state={sample.State} river={sample.River} time={sample.Time_Of_Sample}/>;
+      return <ImageCard src={sample.Image} state={sample.State} river={sample.River} time={sample.Time_Of_Sample}/>;
     });
     return (
      <div className="container">
