@@ -5,8 +5,8 @@ import LoginForm from './Components/LoginForm';
 class App extends Component {
   render() {
     return (
-      // <LoginForm />
-      <Dashboard />
+      <LoginForm />
+      // <Dashboard />
     )
   }
 }

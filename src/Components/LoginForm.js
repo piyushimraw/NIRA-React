@@ -5,9 +5,10 @@ import waterBackground from '../images/backgroundWater.jpg';
 
 class LoginForm extends Component {
 
-  submitForm(){
+  submitForm(e){
     /*TODO Implement this function*/
     console.log("Form Submitted!");
+    e.preventDefault();
   }
 
   render() {
