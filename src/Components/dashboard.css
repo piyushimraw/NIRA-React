@@ -1,0 +1,21 @@
+/*card background*/
+.color{
+    color: #F8e9A1;
+    color: #f76c6c;
+    color: #a8d0e6;
+    color:   #374785;
+    color: #24305e; 
+
+
+
+}
+.component-card{
+    background-color: #374785;
+    color: #a8d0e6;
+    border-radius: 5%;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    overflow: auto;
+    padding: 0 auto;
+    border: 2px solid #a8d0e6;
+}

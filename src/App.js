@@ -9,6 +9,7 @@ class App extends Component {
           <div>
             <Route path="/login" component={LoginForm} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/" exact component={LoginForm} />
           </div>
       // <LoginForm />
       // <Dashboard />
