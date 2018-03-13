@@ -9,6 +9,12 @@
 
 
 }
+
+/* div{
+    overflow-y: scroll;
+} */
+
+
 .component-card{
     background-color: #374785;
     color: #a8d0e6;

@@ -26,7 +26,7 @@ class Dashboard extends Component {
       return <ImageCard src={sample.Image} state={sample.State} river={sample.River} time={sample.Time_Of_Sample}/>;
     });
     return (
-     <div style={{overflow: 'auto'}}>
+     <div className="container-dashboard">
         <Grid>
           <Row>
             <Col sm={6} md={9} className="component-card">
