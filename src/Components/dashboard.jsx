@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Grid, Row, Col} from "react-bootstrap";
 
+import Searchbar from "./Searchbar"
 
 import ImageCard from "./image_card/image_card";
 import "./dashboard.css";
@@ -26,7 +27,9 @@ class Dashboard extends Component {
       return <ImageCard src={sample.Image} state={sample.State} river={sample.River} time={sample.Time_Of_Sample}/>;
     });
     return (
+
      <div className="container-dashboard">
+       <Searchbar/>
         <Grid>
           <Row>
             <Col sm={6} md={9} className="component-card">
