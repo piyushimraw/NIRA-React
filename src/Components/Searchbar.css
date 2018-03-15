@@ -1,0 +1,23 @@
+.Search-bar-div{
+  display: block;
+  text-align: center;
+  color: white;
+}
+
+.Search-bar-form{
+  background-color: grey;
+  display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+
+
+}
+
+.Search-bar{
+  color: green;
+  margin: 10px 20px;
+  padding: 10px 20px;
+
+
+}
