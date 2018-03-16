@@ -14,6 +14,7 @@ class SamplesStore extends EventEmitter {
         return this.samples;
     }
 
+
     searchRiver = (river) => {
         axios.get('http://localhost:4000/samples?River='+river)
           .then(response => {
@@ -28,6 +29,10 @@ class SamplesStore extends EventEmitter {
 capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+
+
+//Handle Actions Methods
     handleActions(actions) {
         console.log("SampleStore recived an action", actions);
         

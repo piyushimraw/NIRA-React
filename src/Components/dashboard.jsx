@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Grid, Row, Col} from "react-bootstrap";
 
-import PieChart from "./charts/pie_chart/PieChart"
-import Searchbar from "./Searchbar"
+import LineChart from './charts/line_chart/LineChart';
+import PieChart from "./charts/pie_chart/PieChart";
+import Searchbar from "./Searchbar";
 import SampleStore from '../stores/SamplesStore';
 
 
@@ -54,10 +55,10 @@ class Dashboard extends Component {
        <Searchbar/>
         <Grid>
           <Row>
-            <Col sm={6} md={12} className="component-card">
+            <Col sm={6} md={5} className="component-card">
               <h1>Map Card</h1>
               <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                Donec elit nulla, facilisis nec facilisis eu, viverra fermentum nunc. 
                Proin ut porttitor neque. Etiam eu libero viverra, sagittis dolor a, fermentum ex. 
                In eu vulputate sapien. Ut dapibus augue ac ipsum lacinia tincidunt. 
@@ -71,12 +72,12 @@ class Dashboard extends Component {
                Curabitur feugiat pellentesque volutpat. 
                Vestibulum mauris sem, vestibulum vitae lectus eu, faucibus finibus velit. 
                Vestibulum sed egestas metus, sit amet sodales odio. 
-               Aliquam nibh eros, viverra in ultricies sit amet, mollis id justo.
+               Aliquam nibh eros, viverra in ultricies sit amet, mollis id justo. */}
             </Col>
-            <Col sm={6} md={3} className="component-card">
+            <Col sm={6} md={5} className="component-card">
               <h1>Info Card</h1>
               <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               Donec elit nulla, facilisis nec facilisis eu, viverra fermentum nunc. 
               Proin ut porttitor neque. Etiam eu libero viverra, sagittis dolor a, fermentum ex. 
               In eu vulputate sapien. Ut dapibus augue ac ipsum lacinia tincidunt. 
@@ -88,16 +89,18 @@ class Dashboard extends Component {
               Nam eget turpis varius, blandit lectus vel, pretium velit. 
               Suspendisse sagittis convallis ipsum, eu malesuada enim. Curabitur feugiat pellentesque volutpat. 
               Vestibulum mauris sem, vestibulum vitae lectus eu, faucibus finibus velit. 
-              Vestibulum sed egestas metus, sit amet sodales odio. Aliquam nibh eros, viverra in ultricies sit amet, mollis id justo.
+              Vestibulum sed egestas metus, sit amet sodales odio. Aliquam nibh eros, viverra in ultricies sit amet, mollis id justo. */}
             </Col>
 
-            <Col sm={6} md={3} className="component-card">
+            <Col sm={6} md={5} className="component-card">
               <h1>Pie Chart and Line Graph</h1>
               <br />
-              <PieChart rawData={this.state.samples} id={1} />
+
+              <LineChart />
+              {/* <PieChart rawData={this.state.samples} id={1} /> */}
             </Col>
 
-            <Col sm={6} md={6} className="component-card">
+            <Col sm={6} md={5} className="component-card">
               <h1> Image galery </h1>
               <br />
               {img}
