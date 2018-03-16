@@ -42,7 +42,6 @@ class Dashboard extends Component {
   }
 
   render() {
-    console.log(this.state.samples);
     const img = this.state.samples.map(sample => {
       return <ImageCard src={sample.Image} 
                         state={sample.State} 
@@ -97,7 +96,7 @@ class Dashboard extends Component {
               <br />
 
               <LineChart />
-              {/* <PieChart rawData={this.state.samples} id={1} /> */}
+              <PieChart />
             </Col>
 
             <Col sm={6} md={5} className="component-card">

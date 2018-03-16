@@ -2,6 +2,7 @@ import {Line} from "react-chartjs-2";
 import React, { Component } from 'react';
 
 import SampleStore from '../../../stores/SamplesStore';
+import * as LineChartActions from '../../../actions/lineChartActions';
 
 
 export default class LineChart extends Component {
@@ -24,6 +25,10 @@ export default class LineChart extends Component {
         });
       }
 
+      handleElementClick = (elem) => {
+          LineChartActions.sendDataToPieChart(elem[0]._index);
+      }
+
       render (){
         const data = {
             labels: this.state.timeLabels,
@@ -32,7 +37,7 @@ export default class LineChart extends Component {
                 label: `${this.state.riverName} Water Quality Over Time`,
                 maintainAspectRatio	: true,
                 fill: false,
-                lineTension: 0.1,
+                lineTension: 0.2,
                 backgroundColor: 'rgba(75,192,192,0.4)',
                 borderColor: 'rgba(75,192,192,1)',
                 borderCapStyle: 'butt',
@@ -54,7 +59,7 @@ export default class LineChart extends Component {
           };
           return (
               <div>
-                 <Line data={data} />
+                 <Line data={data} onElementsClick={this.handleElementClick}/>
               </div>
           );
       }

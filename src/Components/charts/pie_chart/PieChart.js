@@ -1,26 +1,69 @@
 import React, {Component} from 'react';
-import {Pie} from 'react-chartjs-2';
+import {Doughnut} from 'react-chartjs-2';
+
+import SampleStore from '../../../stores/SamplesStore';
+
 
 
 class PieChart extends Component {
 
-    state = {
-        data : []
+    constructor() {
+        super();
+        this.state = {
+            pieLabels: ["Sodium", "Chloride", "Potasium", 
+                        "Calcium", "Manganese","Magnesium", 
+                        "Lead", "Mercury", "Arsenic", "Oxygen"],
+            pieData: []
+        }
     }
 
-
-    componentWillMount = ()=> {
-        console.log(this.props.rawData);
+    componentWillMount(){
+        SampleStore.on('pieDataChange', ()=>{
+            this.setState({
+                pieData: Object.values(SampleStore.getPieData()),
+            });
+        });
     }
 
     render(){
-        console.log(this.props.rawData);
+        const data = {
+            labels: this.state.pieLabels,
+            datasets: [{
+                data: this.state.pieData,
+                backgroundColor: [
+                '#FF6384',
+                '#36A2EB',
+                '#FF6384',
+                '#36A2EB',
+                '#FF6384',
+                '#36A2EB',
+                '#FF6384',
+                '#36A2EB',
+                '#36A2EB',
+                '#FFCE56'
+                ],
+                hoverBackgroundColor: [
+                    '#FF6384',
+                    '#36A2EB',
+                    '#FF6384',
+                    '#36A2EB',
+                    '#FF6384',
+                    '#36A2EB',
+                    '#FF6384',
+                    '#36A2EB',
+                    '#36A2EB',
+                    '#FFCE56'
+                ]
+            }]
+        };
+        
+
         return(
-            <div className="chart">
-                Chart Component
+            <div> 
+                <Doughnut data={data} />
             </div>
         );
     }
-}
 
+}
 export default PieChart;
