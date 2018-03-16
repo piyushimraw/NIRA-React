@@ -31,16 +31,16 @@ class PieChart extends Component {
             datasets: [{
                 data: this.state.pieData,
                 backgroundColor: [
+                '#FF6384', //sodium
+                '#36A2EB', //chloride
+                '#FF6384', //potasium
+                '#36A2EB', //calcium
                 '#FF6384',
                 '#36A2EB',
                 '#FF6384',
                 '#36A2EB',
-                '#FF6384',
                 '#36A2EB',
-                '#FF6384',
-                '#36A2EB',
-                '#36A2EB',
-                '#FFCE56'
+                '#FFCE56' //oxygen
                 ],
                 hoverBackgroundColor: [
                     '#FF6384',
