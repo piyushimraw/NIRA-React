@@ -1,0 +1,16 @@
+.sample-point{
+  background: url('./red-marker1.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  top:-0px;
+  left:0px;
+
+}
+
+.sample-text{
+  color: red;
+
+}
