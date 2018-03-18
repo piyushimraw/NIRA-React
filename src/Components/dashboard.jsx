@@ -13,7 +13,10 @@ import ImageCard from "./image_card/image_card";
 import "./dashboard.css";
 
 
+
+
 class Dashboard extends Component {
+
 
   // state = {
   //   samples : []
@@ -31,7 +34,9 @@ class Dashboard extends Component {
     super()
     this.state ={
       samples: SampleStore.getAll(),
+      heatmap:true
     };
+    this.setHeatmap = this.setHeatmap.bind(this);
   }
 
   componentWillMount(){
@@ -40,6 +45,16 @@ class Dashboard extends Component {
         samples: SampleStore.getAll(),
       });
     });
+  }
+
+  //Heatmap toggle function
+  setHeatmap(){
+    this.setState(prevState => ({
+      heatmap : !prevState.heatmap
+
+    }));
+
+
   }
 
   render() {
@@ -59,8 +74,8 @@ class Dashboard extends Component {
             <Col sm={6} md={5} className="component-card">
               <h1>Map Card</h1>
               <br />
-                <SimpleMap />
-              <p>Helow world</p>
+                <SimpleMap checkHeatmap={this.state.heatmap} />
+              <button id="toggle-button" onClick={this.setHeatmap}>Toggle</button>
 
             </Col>
             <Col sm={6} md={5} className="component-card">
@@ -92,7 +107,7 @@ class Dashboard extends Component {
             Maecenas id imperdiet tellus.
             Duis sem ipsum, consequat molestie risus in, convallis facilisis dui.
             In arcu eros, sollicitudin ut magna eu, tempus ullamcorper purus.
-          
+
 
             </Col>
 
@@ -105,7 +120,7 @@ class Dashboard extends Component {
             </Col>
 
             <Col sm={6} md={5} className="component-card">
-              <h1> Image galery </h1>
+              <h1> Image gallery </h1>
               <br />
               {img}
             </Col>

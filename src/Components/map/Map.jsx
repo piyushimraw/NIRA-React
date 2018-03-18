@@ -5,13 +5,49 @@ import "./map.css";
 const AnyReactComponent = ({ text }) => <div className="sample-text">{text}<div className="sample-point"></div></div>;
 
 class SimpleMap extends Component {
+
+
   static defaultProps = {
     center: {lat: 59.95, lng: 30.33},
     zoom: 13
   };
 
   render() {
+      //if heatmap button is not clicked
+      if(!this.props.checkHeatmap)
+        {
+          console.log(this.props.checkHeatmap);
     return (
+
+          <div style={{height: '400px', width: '400px'}}>
+        <GoogleMapReact
+       defaultCenter={this.props.center}
+       defaultZoom={this.props.zoom}
+     >
+       <AnyReactComponent
+         lat={59.955413}
+         lng={30.337844}
+         text={'Sample1'}
+       />
+       <AnyReactComponent
+         lat={59.959100}
+         lng={30.338673}
+         text={'Sample2'}
+       />
+       <AnyReactComponent
+         lat={59.952980}
+         lng={30.332671}
+         text={'Sample3'}
+       />
+     </GoogleMapReact>
+   </div>
+);
+}//end of if
+
+    if(this.props.checkHeatmap)
+    {
+      console.log(this.props.checkHeatmap);
+        return(
       <div style={{height: '400px', width: '400px'}}>
       <GoogleMapReact
         defaultCenter={this.props.center}
@@ -34,7 +70,7 @@ class SimpleMap extends Component {
       ],
       options: {
         radius: 20,
-        opacity: 0.7,
+        opacity: 0.5,
         gradient: [
           'rgba(0, 255, 255, 0)',
           'rgba(0, 255, 255, 1)',
@@ -54,24 +90,10 @@ class SimpleMap extends Component {
       },
     }}
       >
-        <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
-          text={'Sample1'}
-        />
-        <AnyReactComponent
-          lat={59.959100}
-          lng={30.338673}
-          text={'Sample2'}
-        />
-        <AnyReactComponent
-          lat={59.952980}
-          lng={30.332671}
-          text={'Sample3'}
-        />
       </GoogleMapReact>
     </div>
     );
+    }
   }
 }
 export default SimpleMap

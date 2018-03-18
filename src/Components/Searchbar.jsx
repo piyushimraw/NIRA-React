@@ -18,7 +18,7 @@ class Searchbar extends Component {
  getInfo = (query) => {
         this.setState({
           results: rivers.filter(function(data){
-            return data.name.includes(query);
+            return data.name.includes(query.toLowerCase());
           })
           })
 
@@ -50,10 +50,11 @@ class Searchbar extends Component {
    return (
      <div className="Search-bar-div">
      <form className="Search-bar-form" onSubmit={this.handleSubmit}>
-       <h6>River:</h6>
+       <label className="Label-text">River:</label>
        <input
+         type="text"
          className="Search-bar"
-         placeholder="Search for..."
+         placeholder="Enter river"
          ref={input => this.search = input}
          onChange={this.handleInputChange}
        />

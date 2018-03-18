@@ -22,3 +22,9 @@
     padding: 0 auto;
     border: 2px solid #a8d0e6;
 }
+
+#toggle-button{
+  color:white;
+  background-color:red;
+  border-radius:20%;
+}
