@@ -38,7 +38,7 @@ class SamplesStore extends EventEmitter {
     }
 
 
-//Function to Capitalize the first Letter of search parameter 
+//Function to Capitalize the first Letter of search parameter
 capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -48,11 +48,11 @@ capitalizeFirstLetter(string) {
 //Handle Actions Methods
     handleActions(actions) {
         console.log("SampleStore recived an action", actions);
-        
+
 
         //Add switch action for every action we need to do.
         switch(actions.type){
-            case 'SEARCH_RIVER_COMPLETED' : 
+            case 'SEARCH_RIVER_COMPLETED' :
                 this.searchRiver(actions.samples);
                 break;
             case 'SEND_DATA_TO_PIE_CHART':

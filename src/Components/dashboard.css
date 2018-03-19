@@ -18,7 +18,9 @@
     border-radius: 5%;
     margin-top: 1rem;
     margin-left: 1rem;
-    overflow: auto;
+    width:480px;
+    height:500px;
+    overflow: hidden;
     padding: 0 auto;
     border: 2px solid #a8d0e6;
 }

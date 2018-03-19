@@ -14,3 +14,9 @@
   color: red;
 
 }
+
+.sample-marker{
+  position:relative;
+  top:-30px;
+  left:20px;
+}

@@ -1,99 +1,41 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
-import "./map.css";
-
-const AnyReactComponent = ({ text }) => <div className="sample-text">{text}<div className="sample-point"></div></div>;
-
-class SimpleMap extends Component {
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 
-  static defaultProps = {
-    center: {lat: 59.95, lng: 30.33},
-    zoom: 13
-  };
+const style = {
+  width: '95%',
+  height: '85%'
+}
+export class MapContainer extends Component {
 
-  render() {
-      //if heatmap button is not clicked
-      if(!this.props.checkHeatmap)
-        {
-          console.log(this.props.checkHeatmap);
+onMarkerClick(props,marker,e){
+  console.log('Marker clicked!');
+}
+
+render() {
     return (
+      <Map google={this.props.google}
+            style={style}
+            title={'A sample of water for pollution'}
+            initialCenter={{
+            lat: 23.854885,
+            lng: 85.081807
+          }}
+            zoom={14}>
 
-          <div style={{height: '400px', width: '400px'}}>
-        <GoogleMapReact
-       defaultCenter={this.props.center}
-       defaultZoom={this.props.zoom}
-     >
-       <AnyReactComponent
-         lat={59.955413}
-         lng={30.337844}
-         text={'Sample1'}
-       />
-       <AnyReactComponent
-         lat={59.959100}
-         lng={30.338673}
-         text={'Sample2'}
-       />
-       <AnyReactComponent
-         lat={59.952980}
-         lng={30.332671}
-         text={'Sample3'}
-       />
-     </GoogleMapReact>
-   </div>
-);
-}//end of if
+        <Marker onClick={this.onMarkerClick}
+                name={'Current location'} />
 
-    if(this.props.checkHeatmap)
-    {
-      console.log(this.props.checkHeatmap);
-        return(
-      <div style={{height: '400px', width: '400px'}}>
-      <GoogleMapReact
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
-        heatmapLibrary={true}
-    heatmap={{
-      positions: [
-        {
-          lat: 59.955413,
-          lng: 30.337844,
-        },
-        {
-          lat: 59.959100,
-          lng: 30.338676,
-        },
-        {
-          lat:59.957912,
-          lng: 30.335901,
-        },
-      ],
-      options: {
-        radius: 20,
-        opacity: 0.5,
-        gradient: [
-          'rgba(0, 255, 255, 0)',
-          'rgba(0, 255, 255, 1)',
-          'rgba(0, 191, 255, 1)',
-          'rgba(0, 127, 255, 1)',
-          'rgba(0, 63, 255, 1)',
-          'rgba(0, 0, 255, 1)',
-          'rgba(0, 0, 223, 1)',
-          'rgba(0, 0, 191, 1)',
-          'rgba(0, 0, 159, 1)',
-          'rgba(0, 0, 127, 1)',
-          'rgba(63, 0, 91, 1)',
-          'rgba(127, 0, 63, 1)',
-          'rgba(191, 0, 31, 1)',
-          'rgba(255, 0, 0, 1)'
-        ]
-      },
-    }}
-      >
-      </GoogleMapReact>
-    </div>
+        <InfoWindow onClose={this.onInfoWindowClose}>
+            <div>
+              <h1>A PLACE</h1>
+            </div>
+        </InfoWindow>
+      </Map>
     );
-    }
   }
 }
-export default SimpleMap
+
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyCny5Ok9iHLVB7N0jL7Tx47uoXdINLC5FI'
+})(MapContainer)
