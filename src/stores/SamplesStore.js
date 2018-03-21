@@ -8,7 +8,8 @@ class SamplesStore extends EventEmitter {
         super();
         this.samples = [];
         this.pieData = {};
-
+        this.markerData = [];
+        this.id = [];
     }
 
     getAll() {
@@ -25,6 +26,21 @@ class SamplesStore extends EventEmitter {
         this.emit('change');
     }
 
+
+
+    populateMarkerCoordinatesAndId = () => {
+      console.log('LALALALAL');
+    this.markerData = this.samples.map(sample =>  {
+      let obj = {};
+      obj.coordinates = sample.Cordinates;
+      obj.id = sample.id;
+      console.log(obj);
+      return obj;
+    });
+    console.log(this.markerData);
+    return this.markerData;
+    }
+
     getPieData(){
         return this.pieData;
     }
@@ -35,6 +51,11 @@ class SamplesStore extends EventEmitter {
         this.pieData = {...this.pieData, "Oxygen": this.samples[index].Water_Quality_Indicators.Disolved_Oxygen};
         console.log(this.pieData);
         this.emit('pieDataChange');
+    }
+
+    useMapData(markerid){
+        console.log('The clicked marker was : '+ markerid);
+        this.emit('changeInfo');
     }
 
 
@@ -57,6 +78,9 @@ capitalizeFirstLetter(string) {
                 break;
             case 'SEND_DATA_TO_PIE_CHART':
                 this.updatePieData(actions._index);
+                break;
+            case 'USE-MAP-DATA':
+                this.useMapData(actions.markerid);
                 break;
 
         }

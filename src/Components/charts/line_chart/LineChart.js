@@ -14,7 +14,7 @@ export default class LineChart extends Component {
             riverName:""
         };
     }
-    
+
     componentWillMount(){
         SampleStore.on('change', ()=> {
           this.setState({
@@ -26,6 +26,7 @@ export default class LineChart extends Component {
       }
 
       handleElementClick = (elem) => {
+          console.log(elem);
           LineChartActions.sendDataToPieChart(elem[0]._index);
       }
 
