@@ -26,8 +26,13 @@ export default class LineChart extends Component {
       }
 
       handleElementClick = (elem) => {
-          console.log(elem);
-          LineChartActions.sendDataToPieChart(elem[0]._index);
+
+            //Exception Check for in between click of line
+          if(!(elem.length === undefined || elem.length == 0))
+           {     
+               LineChartActions.sendDataToPieChart(elem[0]._index); 
+            
+            }
       }
 
       render (){
