@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import {withRouter} from "react-router-dom";
-
+import { Link, withRouter } from 'react-router-dom';
 import '../LoginForm.css';
 import 'font-awesome/css/font-awesome.min.css';
 import waterBackground from '../images/backgroundWater.jpg';
@@ -15,6 +14,14 @@ const STATE = {
 const byPropKey = (key, value) => () => ({
     [key]: value,
 });
+
+const LoginButton = () => {
+  return(
+      <button className="button-field" type="submit">
+        Login
+      </button>
+  );
+}
 
 class LoginForm extends Component {
 
@@ -94,9 +101,7 @@ class LoginForm extends Component {
                               </div>
 
                               <div className="button-wrapper">
-                						      <button disabled={isInvalid} className="button-field" type="submit">
-                							        Login
-                						      </button>
+                						      <LoginButton />
                 					    </div>
                               { error && <p className="error-message">{error.message}</p> }
                           </form>
@@ -109,4 +114,5 @@ class LoginForm extends Component {
   }
 }
 
-export default  LoginForm;
+export default withRouter(LoginForm);
+export { LoginButton };
