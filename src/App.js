@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
+import {BrowserRouter as Router, Route, withRouter,Switch } from 'react-router-dom';
 import Dashboard from "./Components/dashboard"
 import LoginForm from './Components/LoginForm';
 import Navigation from './Components/Navigation';
@@ -21,26 +21,31 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      // // <Router>
         <div>
-          <Navigation authUser={this.state.authUser}/>
-
-          <Route
-            path="/login"
-            component={() => <LoginForm />}
-          />
-          <Route
-            path="/dashboard"
-            component={() => <Dashboard />}
-          />
-          <Route
-            path="/"
-            exact component={() => <LoginForm />}
-          />
+           <Navigation authUser={this.state.authUser}/>
         </div>
-      </Router>
+
+      //     //not setting up the routes setting the route re render 
+      //    the component hence double component problem.
+      
+      //     // {/* <Route
+      //     //   path="/login"
+      //     //  exact component={() => <LoginForm />}
+      //     // />
+      //     // {/* <Route
+      //     //   path="/dashboard"
+      //     //   component={() => <Dashboard />}
+      //     // /> */}
+      //     // {/* <Route
+      //     //   path="/"
+      //     //   exact component={() => <LoginForm />}
+      //     // /> */} 
+        
+      // // </Router>
+
     )
   }
 }
 
-export default withRouter(App);
+export default (App);

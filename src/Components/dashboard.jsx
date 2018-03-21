@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Grid, Row, Col} from "react-bootstrap";
 
 import LineChart from './charts/line_chart/LineChart';
+import Navigation from './Navigation';
 import PieChart from "./charts/pie_chart/PieChart";
 import Searchbar from "./Searchbar";
 import SampleStore from '../stores/SamplesStore';
@@ -52,7 +53,6 @@ class Dashboard extends Component {
   logOut() {
     this.state = auth.doSignOut();
     //TODO component not updating, fix.
-    this.props.history.push('/login');
   }
 
   render() {
@@ -129,4 +129,4 @@ class Dashboard extends Component {
   }
 }
 
-export default withRouter(Dashboard);
+export default withRouter (Dashboard);

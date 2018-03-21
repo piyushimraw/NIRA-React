@@ -40,7 +40,8 @@ class LoginForm extends Component {
     auth.doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState(() => ({ ...STATE }));
-        this.props.history.push('/dashboard');
+
+        // this.props.history.push('/dashboard');
       })
       .catch(error => {
         this.setState(byPropKey('error', error));
