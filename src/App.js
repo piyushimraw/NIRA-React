@@ -13,13 +13,14 @@ class App extends Component {
       };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     //TODO 
     // * Check if onAuthStateChanged is emiting any change on logout
     // * if not follow  https://stackoverflow.com/questions/37603118/firebase-auth-onauthstatechanged-not-working
     //
     //
     firebase.auth.onAuthStateChanged(authUser =>{
+      console.log(authUser);
       authUser ? this.setState(() =>({ authUser })) : this.setState(() =>({ authUser : null }));
     });
   }

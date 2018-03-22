@@ -2,7 +2,7 @@ import * as firebase from 'firebase';
 
 const config = {
   apiKey: "AIzaSyCs2V4vHW0x4LmWJdYLMzgLxEMTW2f0GeU",
-  authDomain: "nira-android.firebaseapp.com",
+  authDomain: "http://localhost:3000/",
   databaseURL: "https://nira-android.firebaseio.com",
   projectId: "nira-android",
   storageBucket: "nira-android.appspot.com",
