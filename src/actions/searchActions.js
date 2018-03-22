@@ -12,6 +12,5 @@ export function searchRiver(river){
             samples,
         });
     });
-   
-
+window.axios = axios;
 }

@@ -8,7 +8,8 @@ class SamplesStore extends EventEmitter {
         super();
         this.samples = [];
         this.pieData = {};
-
+        this.markerData = [];
+        this.id = [];
     }
 
     getAll() {
@@ -25,6 +26,21 @@ class SamplesStore extends EventEmitter {
         this.emit('change');
     }
 
+
+
+    populateMarkerCoordinatesAndId = () => {
+      console.log('LALALALAL');
+    this.markerData = this.samples.map(sample =>  {
+      let obj = {};
+      obj.coordinates = sample.Cordinates;
+      obj.id = sample.id;
+      console.log(obj);
+      return obj;
+    });
+    console.log(this.markerData);
+    return this.markerData;
+    }
+
     getPieData(){
         return this.pieData;
     }
@@ -37,8 +53,13 @@ class SamplesStore extends EventEmitter {
         this.emit('pieDataChange');
     }
 
+    useMapData(markerid){
+        console.log('The clicked marker was : '+ markerid);
+        this.emit('changeInfo');
+    }
 
-//Function to Capitalize the first Letter of search parameter 
+
+//Function to Capitalize the first Letter of search parameter
 capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -48,15 +69,18 @@ capitalizeFirstLetter(string) {
 //Handle Actions Methods
     handleActions(actions) {
         console.log("SampleStore recived an action", actions);
-        
+
 
         //Add switch action for every action we need to do.
         switch(actions.type){
-            case 'SEARCH_RIVER_COMPLETED' : 
+            case 'SEARCH_RIVER_COMPLETED' :
                 this.searchRiver(actions.samples);
                 break;
             case 'SEND_DATA_TO_PIE_CHART':
                 this.updatePieData(actions._index);
+                break;
+            case 'USE-MAP-DATA':
+                this.useMapData(actions.markerid);
                 break;
 
         }
