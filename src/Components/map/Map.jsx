@@ -3,12 +3,13 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import * as MapActions from '../../actions/mapActions';
 import SampleStore from '../../stores/SamplesStore';
 
+//Trial
+import WithHeatMap from './heatMap'
+
 const style = {
   width: '95%',
   height: '85%'
 }
-const INITIAL_LAT = 23.854885;
-const INITIAL_LNG = 85.081807;
 
 export class MapContainer extends Component {
 
@@ -62,30 +63,23 @@ render() {
              name={'Sample'} />
   });
 
-      if(!this.state.initial_load)
+    //   if(!this.state.initial_load)
+    // return (
+    //   <Map google={this.props.google}
+    //         style={style}
+    //         title={'A sample of water for pollution'}
+    //         initialCenter={{
+    //         lat: 31.104818,
+    //         lng: 77.173401
+    //       }}
+    //         zoom={7}>
+    //
+    //     {markers}
+    //   </Map>
+    // );
     return (
-      <Map google={this.props.google}
-            style={style}
-            title={'A sample of water for pollution'}
-            initialCenter={{
-            lat: 31.104818,
-            lng: 77.173401
-          }}
-            zoom={7}>
 
-        {markers}
-      </Map>
-    );
-    return (
-      <Map google={this.props.google}
-            style={style}
-            title={'A sample of water for pollution'}
-            initialCenter={{
-            lat: 31.104818,
-            lng: 77.173401
-          }}
-            zoom={10}>
-      </Map>
+    <WithHeatMap />
 
     );
   }
