@@ -3,7 +3,6 @@ import OptimalRange from '../../stores/Optimal_Range';
 import React, { Component } from 'react';
 import SampleStore from '../../stores/SamplesStore';
 import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap';
-import ScrollArea from "react-scrollbar";
 
 
 import './info_card.css';
