@@ -4,10 +4,7 @@
     color: #f76c6c;
     color: #a8d0e6;
     color:   #374785;
-    color: #24305e; 
-
-
-
+    color: #24305e;
 }
 
 /* div{
@@ -21,7 +18,15 @@
     border-radius: 5%;
     margin-top: 1rem;
     margin-left: 1rem;
-    overflow: auto;
+    width:480px;
+    height:500px;
+    overflow: hidden;
     padding: 0 auto;
     border: 2px solid #a8d0e6;
+}
+
+#toggle-button{
+  color:white;
+  background-color:red;
+  border-radius:20%;
 }

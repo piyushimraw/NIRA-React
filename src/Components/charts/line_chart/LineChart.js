@@ -14,7 +14,7 @@ export default class LineChart extends Component {
             riverName:""
         };
     }
-    
+
     componentWillMount(){
         SampleStore.on('change', ()=> {
           this.setState({
@@ -26,14 +26,13 @@ export default class LineChart extends Component {
       }
 
       handleElementClick = (elem) => {
-            
+
             //Exception Check for in between click of line
           if(!(elem.length === undefined || elem.length == 0))
            {     
                LineChartActions.sendDataToPieChart(elem[0]._index); 
             
             }
-
       }
 
       render (){

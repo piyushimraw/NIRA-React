@@ -1,11 +1,15 @@
+.Label-text{
+  color: black;
+}
+
 .Search-bar-div{
   display: block;
   text-align: center;
-  color: white;
+
 }
 
 .Search-bar-form{
-  background-color: grey;
+
   display: inline-block;
     margin-left: auto;
     margin-right: auto;
@@ -15,9 +19,16 @@
 }
 
 .Search-bar{
-  color: green;
+  border: 3px solid black;
+  border-radius:5px;
+  color: blue;
   margin: 10px 20px;
+  
   padding: 10px 20px;
+  width: 50%;
+  transition: width 0.4s ease-in-out;
+}
 
-
+.Search-bar:focus{
+  width: 70%;
 }
