@@ -10,6 +10,8 @@ class SamplesStore extends EventEmitter {
         this.pieData = {};
         this.markerData = [];
         this.id = [];
+        
+        this.infoData= [];
     }
 
     getAll() {
@@ -55,14 +57,21 @@ class SamplesStore extends EventEmitter {
 
     useMapData(markerid){
         console.log('The clicked marker was : '+ markerid);
+        this.infoData = this.samples.filter(sample => {
+            if(sample.id === markerid) return sample;
+        });
         this.emit('changeInfo');
+    }
+
+    getInfoData(){
+        return this.infoData;
     }
 
 
 //Function to Capitalize the first Letter of search parameter
-capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+// capitalizeFirstLetter(string) {
+//     return string.charAt(0).toUpperCase() + string.slice(1);
+// }
 
 
 
