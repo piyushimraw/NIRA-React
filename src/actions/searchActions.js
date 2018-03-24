@@ -10,6 +10,7 @@ export function searchRiver(river){
         {
             type: "SEARCH_RIVER_COMPLETED",
             samples,
+            river
         });
     });
 window.axios = axios;

@@ -10,6 +10,8 @@ class SamplesStore extends EventEmitter {
         this.pieData = {};
         this.markerData = [];
         this.id = [];
+        this.heatmapData = [];
+
     }
 
     getAll() {
@@ -23,13 +25,14 @@ class SamplesStore extends EventEmitter {
         //     console.log(response);
         //     this.samples = response.data;
         this.samples = samples;
+
+
         this.emit('change');
     }
 
 
 
     populateMarkerCoordinatesAndId = () => {
-      console.log('LALALALAL');
     this.markerData = this.samples.map(sample =>  {
       let obj = {};
       obj.coordinates = sample.Cordinates;
@@ -39,6 +42,20 @@ class SamplesStore extends EventEmitter {
     });
     console.log(this.markerData);
     return this.markerData;
+    }
+
+    toggleHeatmap(){
+      this.heatmapData = this.samples.map(sample => {
+        let obj = {};
+        obj.coordinates = sample.Cordinates;
+        obj.temperature = sample.Temperature;
+        return obj;
+      });
+      this.emit('heatmap-clicked');
+    }
+
+    getHeatmapData(){
+      return this.heatmapData;
     }
 
     getPieData(){
@@ -65,7 +82,6 @@ capitalizeFirstLetter(string) {
 }
 
 
-
 //Handle Actions Methods
     handleActions(actions) {
         console.log("SampleStore recived an action", actions);
@@ -74,7 +90,7 @@ capitalizeFirstLetter(string) {
         //Add switch action for every action we need to do.
         switch(actions.type){
             case 'SEARCH_RIVER_COMPLETED' :
-                this.searchRiver(actions.samples);
+                this.searchRiver(actions.samples,actions.river);
                 break;
             case 'SEND_DATA_TO_PIE_CHART':
                 this.updatePieData(actions._index);
@@ -82,6 +98,8 @@ capitalizeFirstLetter(string) {
             case 'USE-MAP-DATA':
                 this.useMapData(actions.markerid);
                 break;
+            case 'TOGGLE-HEATMAP':
+                this.toggleHeatmap();
 
         }
 
