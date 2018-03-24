@@ -11,13 +11,13 @@ import HeatMap from 'google-maps-react';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 const style = {
-  width: '450px',
-  height: '450px'
+  width: '90%',
+  height: '90%'
 }
 
 export class MapContainer extends Component {
   static defaultProps = {
-    center: {lat: 59.95, lng: 30.33},
+    center: {lat: 60.714305, lng: 47.051773},
     zoom: 11
   };
 
@@ -25,8 +25,7 @@ export class MapContainer extends Component {
     super();
     this.state = {
         markerData : [],
-        initial_load : true,
-        heatmap_load : false,
+        heatmap_load : true,
         heatmapData : []
     }
   }
@@ -34,17 +33,16 @@ export class MapContainer extends Component {
   componentWillMount(){
     SampleStore.on('change',() =>{
       this.setState({
-          initial_load : false,
+          heatmap_load : false,
           markerData : SampleStore.populateMarkerCoordinatesAndId()
       })
     })
     SampleStore.on('heatmap-clicked',() => {
       console.log('changing heatmap_loaded');
-      this.setState({
-        initial_load:false,
-        heatmap_load:true,
+      this.setState(prevState => ({
+        heatmap_load:!prevState.heatmap_load,
         heatmapData : SampleStore.getHeatmapData()
-      })
+      }))
     })
   }
 
@@ -78,7 +76,64 @@ render() {
              id = {marker.id}
              name={'Sample'} />
   });
-    if(!this.state.initial_load && !this.state.heatmap_load)
+
+  if(this.state.heatmap_load)
+ return (
+   // <Map google={this.props.google}
+   //       style={style}
+   //       title={'A sample of water for pollution'}
+   //       initialCenter={{
+   //       lat: 31.104818,
+   //       lng: 77.173401}}
+   //       zoom={10}>
+   // </Map>
+   <GoogleMapReact
+    bootstrapURLKeys={{ key: 'AIzaSyCny5Ok9iHLVB7N0jL7Tx47uoXdINLC5FI'}}
+     defaultCenter={this.props.center}
+     defaultZoom={this.props.zoom}
+     style = {style}
+     heatmapLibrary={true}
+ heatmap={{
+   positions: [
+     {
+       lat: 60.714305,
+       lng: 47.051773,
+     },
+     {
+       lat: 60.734305,
+       lng: 47.061773,
+     },
+     {
+       lat: 60.754305,
+       lng: 47.081773,
+     },
+   ],
+   options: {
+     radius: 20,
+     opacity: 0.3,
+     gradient: [
+       'rgba(0, 255, 255, 0)',
+       'rgba(0, 255, 255, 1)',
+       'rgba(0, 191, 255, 1)',
+       'rgba(0, 127, 255, 1)',
+       'rgba(0, 63, 255, 1)',
+       'rgba(0, 0, 255, 1)',
+       'rgba(0, 0, 223, 1)',
+       'rgba(0, 0, 191, 1)',
+       'rgba(0, 0, 159, 1)',
+       'rgba(0, 0, 127, 1)',
+       'rgba(63, 0, 91, 1)',
+       'rgba(127, 0, 63, 1)',
+       'rgba(191, 0, 31, 1)',
+       'rgba(255, 0, 0, 1)'
+     ]
+   },
+ }}
+   >
+   </GoogleMapReact>
+ );
+
+    if(!this.state.heatmap_load)
      return (
        <Map google={this.props.google}
              style={style}
@@ -91,64 +146,11 @@ render() {
        </Map>
      );
 
-     if(this.state.initial_load)
-    return (
-      <Map google={this.props.google}
-            style={style}
-            title={'A sample of water for pollution'}
-            initialCenter={{
-            lat: 31.104818,
-            lng: 77.173401}}
-            zoom={10}>
-      </Map>
-    );
-    if(!this.state.initial_load && this.state.heatmap_load)
-    return(
-      <GoogleMapReact
-       bootstrapURLKeys={{ key: 'AIzaSyCny5Ok9iHLVB7N0jL7Tx47uoXdINLC5FI'}}
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
-        style = {{style}}
-        heatmapLibrary={true}
-    heatmap={{
-      positions: [
-        {
-          lat: 60.714305,
-          lng: 47.051773,
-        },
-        {
-          lat: 60.734305,
-          lng: 47.061773,
-        },
-        {
-          lat: 60.754305,
-          lng: 47.081773,
-        },
-      ],
-      options: {
-        radius: 20,
-        opacity: 0.7,
-        gradient: [
-          'rgba(0, 255, 255, 0)',
-          'rgba(0, 255, 255, 1)',
-          'rgba(0, 191, 255, 1)',
-          'rgba(0, 127, 255, 1)',
-          'rgba(0, 63, 255, 1)',
-          'rgba(0, 0, 255, 1)',
-          'rgba(0, 0, 223, 1)',
-          'rgba(0, 0, 191, 1)',
-          'rgba(0, 0, 159, 1)',
-          'rgba(0, 0, 127, 1)',
-          'rgba(63, 0, 91, 1)',
-          'rgba(127, 0, 63, 1)',
-          'rgba(191, 0, 31, 1)',
-          'rgba(255, 0, 0, 1)'
-        ]
-      },
-    }}
-      >
-      </GoogleMapReact>
-    );
+
+    // if(!this.state.initial_load && this.state.heatmap_load)
+    // return(
+    //
+    // );
   }
 }
 

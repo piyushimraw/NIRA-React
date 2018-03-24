@@ -46,8 +46,7 @@ class Dashboard extends Component {
   constructor(){
     super()
     this.state ={
-      samples: SampleStore.getAll(),
-      heatmap:false
+      samples: SampleStore.getAll()
     };
 
   }
@@ -60,13 +59,9 @@ class Dashboard extends Component {
     });
   }
 
-<<<<<<< HEAD
   setHeatmap(){
          HeatmapActions.toggleHeatmap();
   }
-
-=======
->>>>>>> 23f0f333b6a5d06000ef3e451a5cc0d63ce257ee
 
   logOut() {
     this.state = auth.doSignOut();
@@ -79,8 +74,6 @@ class Dashboard extends Component {
                         river={sample.River}
                         time={sample.Time_Of_Sample}/>;
     });
-    console.log('Heatmap state status in dashboard is:');
-    console.log(this.state.heatmap);
     return (
 
      <div className="container-dashboard">
@@ -97,62 +90,18 @@ class Dashboard extends Component {
               <button id = 'toggle-button' onClick = {this.setHeatmap.bind(this)}>Heatmap </button>
               <br />
 
-<<<<<<< HEAD
-              <MapContainer heatmap = {this.state.heatmap} />
-=======
-              <MapContainer />
-              /* Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-               Donec elit nulla, facilisis nec facilisis eu, viverra fermentum nunc.
-               Proin ut porttitor neque. Etiam eu libero viverra, sagittis dolor a, fermentum ex.
-               In eu vulputate sapien. Ut dapibus augue ac ipsum lacinia tincidunt.
-               Maecenas id imperdiet tellus.
-               Duis sem ipsum, consequat molestie risus in, convallis facilisis dui.
-               In arcu eros, sollicitudin ut magna eu, tempus ullamcorper purus.
-               Sed pretium posuere tellus sit amet sodales.
-               Pellentesque nisl odio, faucibus a placerat non, placerat at orci.
-               Nam eget turpis varius, blandit lectus vel, pretium velit.
-               Suspendisse sagittis convallis ipsum, eu malesuada enim.
-               Curabitur feugiat pellentesque volutpat.
-               Vestibulum mauris sem, vestibulum vitae lectus eu, faucibus finibus velit.
-               Vestibulum sed egestas metus, sit amet sodales odio.
-               Aliquam nibh eros, viverra in ultricies sit amet, mollis id justo. */
->>>>>>> 23f0f333b6a5d06000ef3e451a5cc0d63ce257ee
 
-            </Col>
+              <MapContainer heatmap = {this.state.heatmap} />
+
+
+
+              </Col>
             <Col sm={6} md={5} className="component-card">
               <h1>Info Card</h1>
 
                 <InfoCard />
               <br />
-<<<<<<< HEAD
-              /* Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec elit nulla, facilisis nec facilisis eu, viverra fermentum nunc.
-              Proin ut porttitor neque. Etiam eu libero viverra, sagittis dolor a, fermentum ex.
-              In eu vulputate sapien. Ut dapibus augue ac ipsum lacinia tincidunt.
-              Maecenas id imperdiet tellus.
-              Duis sem ipsum, consequat molestie risus in, convallis facilisis dui.
-              In arcu eros, sollicitudin ut magna eu, tempus ullamcorper purus.
-              Sed pretium posuere tellus sit amet sodales.
-              Pellentesque nisl odio, faucibus a placerat non, placerat at orci.
-              Nam eget turpis varius, blandit lectus vel, pretium velit.
-              Suspendisse sagittis convallis ipsum, eu malesuada enim. Curabitur feugiat pellentesque volutpat.
-              Vestibulum mauris sem, vestibulum vitae lectus eu, faucibus finibus velit.
-              Vestibulum sed egestas metus, sit amet sodales odio. Aliquam nibh eros, viverra in ultricies sit amet, mollis id justo.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-             Donec elit nulla, facilisis nec facilisis eu, viverra fermentum nunc.
-             Proin ut porttitor neque. Etiam eu libero viverra, sagittis dolor a, fermentum ex.
-             In eu vulputate sapien. Ut dapibus augue ac ipsum lacinia tincidunt.
-             Maecenas id imperdiet tellus.
-             Duis sem ipsum, consequat molestie risus in, convallis facilisis dui.
-             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Donec elit nulla, facilisis nec facilisis eu, viverra fermentum nunc.
-            Proin ut porttitor neque. Etiam eu libero viverra, sagittis dolor a, fermentum ex.
-            In eu vulputate sapien. Ut dapibus augue ac ipsum lacinia tincidunt.
-            Maecenas id imperdiet tellus.
-              Vestibulum sed egestas metus, sit amet sodales odio. Aliquam nibh eros, viverra in ultricies sit amet, mollis id justo. */
-=======
-              
->>>>>>> 23f0f333b6a5d06000ef3e451a5cc0d63ce257ee
+
             </Col>
 
             <Col sm={6} md={5} className="component-card">
