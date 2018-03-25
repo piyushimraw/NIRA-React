@@ -10,8 +10,9 @@ class SamplesStore extends EventEmitter {
         this.pieData = {};
         this.markerData = [];
         this.id = [];
-        
+        this.heatmapData = [];
         this.infoData= [];
+
     }
 
     getAll() {
@@ -25,13 +26,15 @@ class SamplesStore extends EventEmitter {
         //     console.log(response);
         //     this.samples = response.data;
         this.samples = samples;
+
+
         this.emit('change');
     }
 
 
 
     populateMarkerCoordinatesAndId = () => {
-      console.log('LALALALAL');
+
     this.markerData = this.samples.map(sample =>  {
       let obj = {};
       obj.coordinates = sample.Cordinates;
@@ -43,6 +46,19 @@ class SamplesStore extends EventEmitter {
     return this.markerData;
     }
 
+    toggleHeatmap(){
+      this.heatmapData = this.samples.map(sample => {
+        let obj = {};
+        obj.coordinates = sample.Cordinates;
+        obj.temperature = sample.Temperature;
+        return obj;
+      });
+      this.emit('heatmap-clicked');
+    }
+
+    getHeatmapData(){
+      return this.heatmapData;
+    }
     getPieData(){
         return this.pieData;
     }
@@ -55,13 +71,22 @@ class SamplesStore extends EventEmitter {
         this.emit('pieDataChange');
     }
 
+
     useMapData(markerid){
         console.log('The clicked marker was : '+ markerid);
-        this.infoData = this.samples.filter(sample => {
-            if(sample.id === markerid) return sample;
-        });
-        this.emit('changeInfo');
+
+          this.infoData = this.samples.filter(sample => {
+              if(sample.id === markerid) return sample;
+          });
+          this.emit('changeInfo');
     }
+
+
+//Function to Capitalize the first Letter of search parameter
+capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 
     getInfoData(){
         return this.infoData;
@@ -72,7 +97,6 @@ class SamplesStore extends EventEmitter {
 // capitalizeFirstLetter(string) {
 //     return string.charAt(0).toUpperCase() + string.slice(1);
 // }
-
 
 
 //Handle Actions Methods
@@ -91,6 +115,10 @@ class SamplesStore extends EventEmitter {
             case 'USE-MAP-DATA':
                 this.useMapData(actions.markerid);
                 break;
+
+            case 'TOGGLE-HEATMAP':
+                this.toggleHeatmap();
+
 
         }
 
