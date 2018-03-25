@@ -17,8 +17,8 @@ const style = {
 
 export class MapContainer extends Component {
   static defaultProps = {
-    center: {lat: 60.714305, lng: 47.051773},
-    zoom: 11
+    center: {lat: 31.104818, lng: 77.173401},
+    zoom: 13
   };
 
   constructor(){
@@ -26,7 +26,7 @@ export class MapContainer extends Component {
     this.state = {
         markerData : [],
         heatmap_load : true,
-        heatmapData : []
+        heatmapData : SampleStore.getWholeHeatmapData()
     }
   }
 
@@ -44,6 +44,7 @@ export class MapContainer extends Component {
         heatmapData : SampleStore.getHeatmapData()
       }))
     })
+
   }
 
   onMarkerClick(props,marker,e){
@@ -68,6 +69,28 @@ export class MapContainer extends Component {
   //
   //     }
   // }
+  findHeatmapStrength(temperature){
+    let temp = parseInt(temperature);
+    if(temp <= 5)
+      return 'rgba(0, 255, 255, 0)'
+    else if(temp >5 && temp <= 10)
+      return 'rgba(0, 191, 255, 1)'
+    else if(temp > 10 && temp <=15)
+      return 'rgba(0, 127, 255, 1)'
+    else if(temp >15 && temp <=20)
+      return 'rgba(0, 0, 255, 1)'
+    else if(temp >20 && temp <=22)
+      return 'rgba(0, 0, 191, 1)'
+    else if(temp >22 && temp <=30)
+      return 'rgba(0, 0, 127, 1)'
+    else if(temp >30 && temp <=37)
+      return 'rgba(63, 0, 91, 1)'
+    else if(temp >37 && temp <=42)
+      return 'rgba(191, 0, 31, 1)'
+    else
+      return 'rgba(255, 0, 0, 1)'
+
+  }
 
 render() {
   const markers = this.state.markerData.map(marker => {
@@ -76,6 +99,18 @@ render() {
              id = {marker.id}
              name={'Sample'} />
   });
+
+  const heats_position = this.state.heatmapData.map(sample => {
+    let obj = {};
+    obj.lat = sample.coordinates.lat;
+    obj.lng = sample.coordinates.long;
+    return obj;
+  });
+  const heats_gradient = this.state.heatmapData.map(sample => {
+    return this.findHeatmapStrength(sample.Temperature);
+  });
+  console.log('heats_position is');
+  console.log(heats_position);
 
   if(this.state.heatmap_load)
  return (
@@ -94,23 +129,10 @@ render() {
      style = {style}
      heatmapLibrary={true}
  heatmap={{
-   positions: [
-     {
-       lat: 60.714305,
-       lng: 47.051773,
-     },
-     {
-       lat: 60.734305,
-       lng: 47.061773,
-     },
-     {
-       lat: 60.754305,
-       lng: 47.081773,
-     },
-   ],
+   positions: heats_position ,
    options: {
      radius: 20,
-     opacity: 0.3,
+     opacity: 0.5,
      gradient: [
        'rgba(0, 255, 255, 0)',
        'rgba(0, 255, 255, 1)',
