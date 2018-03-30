@@ -16,15 +16,9 @@ const style = {
   width: '90%',
   height: '90%'
 }
-function displayMarkers(markerData){
-const markers = markerData.map(marker => {
-  return <Marker onClick={MapContainer.onMarkerClick()}
-           position={{lat : marker.coordinates.lat,lng : marker.coordinates.long}}
-           id = {marker.id}
-           name={'Sample'} />
-});
-return markers;
-}
+
+
+
 
 function heatPosition(heatmapData){
 const heats_position = heatmapData.map(sample => {
@@ -46,7 +40,7 @@ function ConditinalMap(props){
 
     else if(!props.state.heatmap_load && !props.state.initial_load)
     return (
-      <MarkerMap markers = {displayMarkers(props.state.markerData)}/>
+      <MarkerMap markers = {props.markers}/>
  );
 
   else if(props.state.heatmap_load && !props.state.initial_load)
@@ -92,17 +86,24 @@ export class MapContainer extends Component {
     });
 
   }
-
-  onMarkerClick(props,marker,e){
+s
+  onMarkerClick = (props,marker,e) => {
         //props.id
+        console.log('Marker id:');
+        console.log(props.id);
      MapActions.useMapData(props.id);
 }
 
 render() {
+  const markers = this.state.markerData.map(marker => {
+    return <Marker onClick={this.onMarkerClick}
+             position={{lat : marker.coordinates.lat,lng : marker.coordinates.long}}
+             id = {marker.id}
+             name={'Sample'} />
+  });
 
-      console.log(this.state);
       return (
-        <ConditinalMap state={this.state} props={this.props} />
+        <ConditinalMap state={this.state} props={this.props} markers = {markers}/>
       )
 
   // const heats_gradient = this.state.heatmapData.map(sample => {
