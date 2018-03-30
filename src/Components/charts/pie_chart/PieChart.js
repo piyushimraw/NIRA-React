@@ -10,8 +10,8 @@ class PieChart extends Component {
     constructor() {
         super();
         this.state = {
-            pieLabels: ["Sodium", "Chloride", "Potasium", 
-                        "Calcium", "Manganese","Magnesium", 
+            pieLabels: ["Sodium", "Chloride", "Potasium",
+                        "Calcium", "Manganese","Magnesium",
                         "Lead", "Mercury", "Arsenic", "Oxygen"],
             pieData: []
         }
@@ -31,35 +31,35 @@ class PieChart extends Component {
             datasets: [{
                 data: this.state.pieData,
                 backgroundColor: [
-                '#FF6384', //sodium
-                '#36A2EB', //chloride
-                '#FF6384', //potasium
-                '#36A2EB', //calcium
-                '#FF6384',
-                '#36A2EB',
-                '#FF6384',
-                '#36A2EB',
-                '#36A2EB',
-                '#FFCE56' //oxygen
+                '#FBFF11', //sodium
+                '#F92AFC', //chloride
+                '#C717CA', //potasium
+                '#ECEAEC', //calcium
+                '#2DEB27',
+                '#27EBE2',
+                '#411FE8',
+                '#F70690',
+                '#F7AA06',
+                '#06CFF7' //oxygen
                 ],
                 hoverBackgroundColor: [
-                    '#FF6384',
-                    '#36A2EB',
-                    '#FF6384',
-                    '#36A2EB',
-                    '#FF6384',
-                    '#36A2EB',
-                    '#FF6384',
-                    '#36A2EB',
-                    '#36A2EB',
-                    '#FFCE56'
+                  '#FBFF11', //sodium
+                  '#F92AFC', //chloride
+                  '#C717CA', //potasium
+                  '#ECEAEC', //calcium
+                  '#2DEB27',
+                  '#27EBE2',
+                  '#411FE8',
+                  '#F70690',
+                  '#F7AA06',
+                  '#06CFF7' //oxygen
                 ]
             }]
         };
-        
+
 
         return(
-            <div> 
+            <div>
                 <Doughnut data={data} />
             </div>
         );
