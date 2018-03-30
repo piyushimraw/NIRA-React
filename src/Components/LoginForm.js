@@ -4,6 +4,7 @@ import '../LoginForm.css';
 import 'font-awesome/css/font-awesome.min.css';
 import waterBackground from '../images/backgroundWater.jpg';
 import { auth } from '../firebase';
+import * as HeatmapRenderActions from '../actions/heatmapRenderActions'
 
 const STATE = {
   email: '',
@@ -32,6 +33,7 @@ class LoginForm extends Component {
     }
 
   submitForm(event){
+    HeatmapRenderActions.setHeatmap();
     const{
       email,
       password
@@ -46,7 +48,10 @@ class LoginForm extends Component {
       .catch(error => {
         this.setState(byPropKey('error', error));
       });
+
     event.preventDefault();
+
+
   }
 
   render() {

@@ -12,6 +12,7 @@ class SamplesStore extends EventEmitter {
         this.id = [];
         this.heatmapData = [];
         this.infoData= [];
+        this.wholeHeatmapData = [];
 
     }
 
@@ -26,8 +27,6 @@ class SamplesStore extends EventEmitter {
         //     console.log(response);
         //     this.samples = response.data;
         this.samples = samples;
-
-
         this.emit('change');
     }
 
@@ -54,6 +53,17 @@ class SamplesStore extends EventEmitter {
         return obj;
       });
       this.emit('heatmap-clicked');
+    }
+
+    initialHeatmap(allsamples){
+      console.log('Samplestore initialheatmap called');
+      this.wholeHeatmapData = allsamples;
+      console.log(this.wholeHeatmapData);
+      this.emit('initial-render');
+    }
+
+    getWholeHeatmapData(){
+      return this.wholeHeatmapData;
     }
 
     getHeatmapData(){
@@ -115,9 +125,13 @@ capitalizeFirstLetter(string) {
             case 'USE-MAP-DATA':
                 this.useMapData(actions.markerid);
                 break;
-
+            case 'INITIAL-HEATMAP':
+                this.initialHeatmap(actions.allsamples);
+                break;
             case 'TOGGLE-HEATMAP':
                 this.toggleHeatmap();
+                break;
+
 
 
         }

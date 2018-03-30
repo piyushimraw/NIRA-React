@@ -18,6 +18,7 @@ import ImageCard from "./image_card/image_card";
 import "./dashboard.css";
 
 import * as HeatmapActions from '../actions/heatmapActions'
+
 /**const LogOut = () => {
   return(
     <button type="button" onClick={this.logOut}>
@@ -46,8 +47,11 @@ class Dashboard extends Component {
   constructor(){
     super()
     this.state ={
-      samples: SampleStore.getAll()
+      samples: SampleStore.getAll(),
+      wholeHeatmapData : SampleStore.getWholeHeatmapData()
     };
+
+
 
   }
 
@@ -91,7 +95,7 @@ class Dashboard extends Component {
               <br />
 
 
-              <MapContainer heatmap = {this.state.heatmap} />
+              <MapContainer wholeHeatmapData = {this.state.wholeHeatmapData}/>
 
 
 
