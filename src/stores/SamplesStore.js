@@ -55,9 +55,10 @@ class SamplesStore extends EventEmitter {
       this.emit('heatmap-clicked');
     }
 
-    initialHeatmap(samples){
+    initialHeatmap(allsamples){
       console.log('Samplestore initialheatmap called');
-      this.wholeHeatmapData = samples;
+      this.wholeHeatmapData = allsamples;
+      console.log(this.wholeHeatmapData);
       this.emit('initial-render');
     }
 
@@ -124,10 +125,12 @@ capitalizeFirstLetter(string) {
             case 'USE-MAP-DATA':
                 this.useMapData(actions.markerid);
                 break;
+            case 'INITIAL-HEATMAP':
+                this.initialHeatmap(actions.allsamples);
+                break;
             case 'TOGGLE-HEATMAP':
                 this.toggleHeatmap();
-            case 'INITIAL-RENDER':
-                this.initialHeatmap(actions.samples);
+                break;
 
 
 
