@@ -1,4 +1,5 @@
 import React from 'react'
+import './Searchbar.css'
 
 const Suggestions = (props) => {
   const options = props.results.map(r => (
@@ -6,7 +7,7 @@ const Suggestions = (props) => {
       {r.name}
     </li>
   ))
-  return <ul>{options}</ul>
+  return <div className="suggestion-box"><ul>{options}</ul></div>
 }
 
 export default Suggestions

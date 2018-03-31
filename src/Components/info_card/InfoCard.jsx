@@ -12,8 +12,8 @@ export default class InfoCard extends Component{
         super()
         this.state = {
             info: [],
-            parameters: ["Disolved_Oxygen", "pH", 
-                        "Sodium","Chloride","Calcium", 
+            parameters: ["Disolved_Oxygen", "pH",
+                        "Sodium","Chloride","Calcium",
                         "lead", "mercury","Arsenic"],
             monitorLevel: {},
         }
@@ -48,20 +48,26 @@ export default class InfoCard extends Component{
         const info = this.state.info.map(info => {
             return  <Panel bsStyle="primary">
                         <Panel.Heading>
-                            <Panel.Title componentClass="h3">Sample Taken at {info.State}, 
+                            <Panel.Title componentClass="h3">Sample Taken at {info.State},
                                         District {info.District} on <em>{info.Time_Of_Sample}</em>
                             </Panel.Title>
                         </Panel.Heading>
                         <Panel.Body className={"info_body"}>
-                            <ListGroup>
-                                <ListGroupItem header="River">{info.River}</ListGroupItem>  
-                                <ListGroupItem header="Temprature of Sample">{info.Temprature}</ListGroupItem>
-                                <ListGroupItem header="Color of Sample">{info.Water_Quality_Indicators.Color_of_water}</ListGroupItem>           
+                          <div className="row">
+                            <div className="col-lg-6 col-md-6 col-sm-12">
+                              <ListGroup>
+                                <ListGroupItem header="River">{info.River}</ListGroupItem>
+                                <ListGroupItem header="Temperature of Sample">{info.Temprature}</ListGroupItem>
+                                <ListGroupItem header="Colour of Sample">{info.Water_Quality_Indicators.Color_of_water}</ListGroupItem>
                             </ListGroup>
-                            <Alert  monitorLevel = {this.state.monitorLevel}
-                                    parameters = {this.state.parameters}
+                            </div>
+                            <div className="col-lg-6 col-md-6 col-sm-12">
+                              <Alert  monitorLevel = {this.state.monitorLevel}
+                                parameters = {this.state.parameters}
                             />
-                        </Panel.Body>
+                          </div>
+                        </div>
+                      </Panel.Body>
                     </Panel>
         });
         return (

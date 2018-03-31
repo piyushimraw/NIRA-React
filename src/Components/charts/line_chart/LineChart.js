@@ -17,6 +17,8 @@ export default class LineChart extends Component {
 
     componentWillMount(){
         SampleStore.on('change', ()=> {
+          console.log('heyyyyyyyyyyyyyyyyyyyy');
+          console.log(SampleStore.getAll());
           this.setState({
             timeLabels: SampleStore.getAll().map( sample => sample.Time_Of_Sample),
             data: SampleStore.getAll().map(sample => sample.Total_Water_Quality_Index),
@@ -29,9 +31,9 @@ export default class LineChart extends Component {
 
             //Exception Check for in between click of line
           if(!(elem.length === undefined || elem.length == 0))
-           {     
-               LineChartActions.sendDataToPieChart(elem[0]._index); 
-            
+           {
+               LineChartActions.sendDataToPieChart(elem[0]._index);
+
             }
       }
 

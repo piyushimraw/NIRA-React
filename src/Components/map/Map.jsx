@@ -51,8 +51,8 @@ function ConditinalMap(props){
 
 export class MapContainer extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
         markerData : [],
         heatmap_load : true,
@@ -86,7 +86,7 @@ export class MapContainer extends Component {
     });
 
   }
-s
+
   onMarkerClick = (props,marker,e) => {
         //props.id
         console.log('Marker id:');
