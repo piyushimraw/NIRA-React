@@ -22,7 +22,7 @@ const alert =  (props) => (
                     <strong>{parameter}</strong> is not  in Optimal Range.
                 </Alert>
     } )
-    
+
 )
 
 export default class AlertMessage extends Component{
@@ -59,8 +59,8 @@ export default class AlertMessage extends Component{
     render(){
         return (
         <div>
-            <List
-             width={420}
+          <List
+            width={600}
             height={100}
             rowCount={this.state.alertList.length}
             rowHeight={50}
@@ -68,13 +68,8 @@ export default class AlertMessage extends Component{
          />
          <AssignWorker alertLength={this.state.alertList.length}/>
         </div>
-        
+
         );
     }
 
 }
-
-
-
-
-

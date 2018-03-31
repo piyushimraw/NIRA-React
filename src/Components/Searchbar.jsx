@@ -48,16 +48,16 @@ class Searchbar extends Component {
 
  render() {
    return (
-     <div className="Search-bar-div">
-     <form className="Search-bar-form" onSubmit={this.handleSubmit}>
-       <label className="Label-text">River:</label>
+     <div>
+     <form className="search-form hidden-sm hidden-xs" onSubmit={this.handleSubmit}>
        <input
          type="text"
-         className="Search-bar"
-         placeholder="Enter river"
+         className="search-bar"
+         placeholder="Enter River"
          ref={input => this.search = input}
          onChange={this.handleInputChange}
-       />
+         />
+       <span className="fa fa-search search-span"></span>
        <Suggestions results={this.state.results} />
      </form>
    </div>
