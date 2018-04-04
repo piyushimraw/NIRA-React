@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 import * as MapActions from '../../actions/mapActions';
+import  * as MLAction from '../../actions/mlaction';
 import SampleStore from '../../stores/SamplesStore';
 //import HeatMap from 'google-maps-react';
 import RiverHeatmap from './riverHeatmap'
 import MarkerMap from './markerMap'
 import EmptyMap from './emptyMap'
+
 
 
 //Trial
@@ -92,6 +94,7 @@ s
         console.log('Marker id:');
         console.log(props.id);
      MapActions.useMapData(props.id);
+     MLAction.fetchML(marker.id);
 }
 
 render() {
