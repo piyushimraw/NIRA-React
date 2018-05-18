@@ -7,3 +7,10 @@
 ### Added Screenshots for images
 ###### Login Page
 ![Login Page](screenshots/login.jpg?raw=True)
+
+###### Dashboard Images
+![Dashboard](screenshots/Dashboard.jpg?raw=True)
+![Dashboard Page](screenshots/dashboard2.jpg?raw=True)
+![Dashboard Page](screenshots/dashboard3.jpg?raw=True)
+
+
