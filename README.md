@@ -6,4 +6,4 @@
 
 ### Added Screenshots for images
 ###### Login Page
-![Login Page] (screenshots/login.jpg?raw=True)
+![Login Page](screenshots/login.jpg?raw=True)
